@@ -3,7 +3,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 
 const app = express()
-const PORT = process.env.PORT || 1682
+const PORT = process.env.PORT || 2026
 
 require('./dbconnect')
 const { addNotifyuslist } = require("./database/models/notifyuslist")
