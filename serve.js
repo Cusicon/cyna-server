@@ -6,7 +6,7 @@ const app = express()
 const PORT = process.env.PORT || 2026
 
 require('./dbconnect')
-const { addNotifyuslist } = require("./database/models/notifyuslist")
+const { addNotifyuslist, findNotifyuslists } = require("./database/models/notifyuslist")
 
 app.use(cors())
 app.use(express.static(__dirname))
@@ -32,7 +32,10 @@ app.post("/JSCjsh93820", async (req, res) => {
     }
 
     const added = await addNotifyuslist({ ...obj })
-    if (added) return res.status(201).json({ response: "Ok, added!" })
+    if (added) {
+      const ourTotal = await findNotifyuslists()
+      return res.status(201).json({ response: { msg: "Ok, added!", data: { ourTotal } } })
+    }
 
   } catch (error) {
     console.log("CATCH ERR: ", error)
