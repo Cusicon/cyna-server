@@ -3,7 +3,7 @@ const { Schema } = mongoose
 
 const notifyuslistSchema = new Schema(
     {
-        phoneno: { type: String, required: true },
+        phoneno: { type: String, required: true, unique: true },
         category: { type: String },
         country: { type: String },
         country_code: { type: String },
