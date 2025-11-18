@@ -19,16 +19,16 @@ app.get("/", (req, res) => {
 
 app.post("/JSCjsh93820", async (req, res) => {
   try {
-    const { phoneno } = req.body
+    const { phoneno, category } = req.body
     const user_agent = req.header("User-Agent")
 
     const obj = {
       phone: phoneno,
-      category: "",
+      category: category,
       country: "Nigeria",
       country_code: "NG",
       user_agent: user_agent,
-      time: time
+      time: Date.now()
     }
 
     const added = await addNotifyuslist({ ...obj })
