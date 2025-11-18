@@ -23,7 +23,7 @@ app.post("/JSCjsh93820", async (req, res) => {
     const user_agent = req.header("User-Agent")
 
     const obj = {
-      phone: phoneno,
+      phoneno: phoneno,
       category: category,
       country: "Nigeria",
       country_code: "NG",
