@@ -4,6 +4,7 @@ const { Schema } = mongoose
 const notifyuslistSchema = new Schema(
     {
         phoneno: { type: String, required: true, unique: true },
+        link: { type: String },
         category: { type: String },
         country: { type: String },
         country_code: { type: String },

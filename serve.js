@@ -19,11 +19,12 @@ app.get("/", (req, res) => {
 
 app.post("/JSCjsh93820", async (req, res) => {
   try {
-    const { phoneno, category } = req.body
+    const { phoneno, link, category } = req.body
     const user_agent = req.header("User-Agent")
 
     const obj = {
       phoneno: phoneno,
+      link: link,
       category: category,
       country: "Nigeria",
       country_code: "NG",
@@ -32,12 +33,12 @@ app.post("/JSCjsh93820", async (req, res) => {
     }
 
     const ourTotal = await findNotifyuslists()
-    const one = await findNotifyuslist({ phoneno })
-    if (one) throw new Error("Sorry, incorrect input")
+    const one = await findNotifyuslist({ phoneno, link })
+    if (one) throw new Error("Sorry, I think we know you already")
 
     const added = await addNotifyuslist({ ...obj })
     if (added) {
-      return res.status(201).json({ response: { msg: "Ok, added!", data: { ourTotal: ourTotal++  } } })
+      return res.status(201).json({ response: { msg: "Ok, added!", data: { ourTotal: ourTotal++ } } })
     }
 
   } catch (error) {
